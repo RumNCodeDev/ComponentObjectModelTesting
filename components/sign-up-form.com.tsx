@@ -37,3 +37,34 @@ export class SignUpFormCOM {
     return this.#getValidationMessage("Password must be at least 8 characters");
   }
 }
+
+export const setupSignUpForm = (props: SignUpProps) => {
+  const utils = render(<SignUpForm {...props} />);
+
+  const emailInput = utils.getByLabelText("Email:");
+  const passwordInput = utils.getByLabelText("Password:");
+  const submitButton = utils.getByText("Submit");
+
+  const fillForm = async ({ email, password }: Partial<SignUpData>) => {
+    if (email) await userEvent.type(emailInput, email);
+    if (password) await userEvent.type(passwordInput, password);
+  };
+
+  const submit = () => userEvent.click(submitButton);
+
+  const getValidationMessage = (errorMessage: string) =>
+    utils.getByText(errorMessage);
+
+  const getEmailRequiredMessage = () =>
+    getValidationMessage("Email is required");
+
+  const getPasswordLengthMessage = () =>
+    getValidationMessage("Password must be at least 8 characters");
+
+  return {
+    fillForm,
+    submit,
+    getEmailRequiredMessage,
+    getPasswordLengthMessage,
+  };
+};
