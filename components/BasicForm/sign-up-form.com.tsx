@@ -1,7 +1,8 @@
 // sign-up-form.com.tsx
 import { render, RenderResult } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
-import { SignUpData, SignUpForm, SignUpProps } from "./sign-up-form";
+import { SignUpProps, SignUpData } from "types/formTypes";
+import { SignUpForm } from "./sign-up-form";
 
 export class SignUpFormCOM {
   #utils: RenderResult;

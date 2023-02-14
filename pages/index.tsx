@@ -1,10 +1,16 @@
 import Head from "next/head";
 
-import { SignUpData, SignUpForm } from "@/components/sign-up-form";
+import { SignUpForm } from "@/components/BasicForm/sign-up-form";
+import { FormType, MuiRhfForm } from "@/components/MuiRhfForm";
 import styles from "@/pages/index.module.css";
+import { SignUpData } from "types/formTypes";
 
 export default function Home() {
-  const handleSubmit = (data: SignUpData) => {
+  const handleSubmitSignUpForm = (data: SignUpData) => {
+    console.log(data);
+  };
+
+  const handleeSubmitMuiForm = (data: FormType) => {
     console.log(data);
   };
   return (
@@ -14,7 +20,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <SignUpForm onSubmit={handleSubmit} />
+        {/* <SignUpForm onSubmit={handleSubmit} /> */}
+        <MuiRhfForm onSubmit={handleeSubmitMuiForm} />
       </main>
     </div>
   );

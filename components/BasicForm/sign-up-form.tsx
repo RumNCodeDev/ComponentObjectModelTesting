@@ -1,13 +1,5 @@
 import { useState } from "react";
-
-export type SignUpData = {
-  email: string;
-  password: string;
-};
-
-export type SignUpProps = {
-  onSubmit: (data: SignUpData) => void;
-};
+import { SignUpProps } from "types/formTypes";
 
 export const SignUpForm = ({ onSubmit }: SignUpProps) => {
   const [email, setEmail] = useState("");
