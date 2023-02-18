@@ -89,10 +89,7 @@ describe("SignUpForm COM", () => {
   });
 
   it("calls onSubmit with values when the form is valid", async () => {
-    const formData = {
-      email: "fred@example.com",
-      password: "password",
-    };
+    const formData = { email, password };
 
     await form.fillForm(formData);
     await form.submit();
@@ -138,10 +135,7 @@ describe("SignUpForm Functional", () => {
   });
 
   it("calls onSubmit with values when the form is valid", async () => {
-    const formData = {
-      email: "fred@example.com",
-      password: "password",
-    };
+    const formData = { email, password };
 
     await form.fillForm(formData);
     await form.submit();
@@ -157,7 +151,7 @@ describe("SignUpForm Functional", () => {
   });
 
   it("ensures that an email is provided", async () => {
-    await form.fillForm({});
+    await form.fillForm({ password });
     await form.submit();
 
     const errorMessage = form.getEmailRequiredMessage();
