@@ -6,13 +6,10 @@ import styles from "@/pages/index.module.css";
 import { SignUpData } from "types/formTypes";
 
 export default function Home() {
-  const handleSubmitSignUpForm = (data: SignUpData) => {
+  const handleSubmit = (data: SignUpData | FormType) => {
     console.log(data);
   };
 
-  const handleeSubmitMuiForm = (data: FormType) => {
-    console.log(data);
-  };
   return (
     <div className={styles.container}>
       <Head>
@@ -21,7 +18,7 @@ export default function Home() {
       </Head>
       <main>
         {/* <SignUpForm onSubmit={handleSubmit} /> */}
-        <MuiRhfForm onSubmit={handleeSubmitMuiForm} />
+        <MuiRhfForm onSubmit={handleSubmit} />
       </main>
     </div>
   );

@@ -6,3 +6,8 @@ export type SignUpData = {
 export type SignUpProps = {
   onSubmit: (data: SignUpData) => void;
 };
+
+export interface Option {
+  value: string | number;
+  label: string;
+}

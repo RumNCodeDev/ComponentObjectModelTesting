@@ -7,6 +7,7 @@ import {
 
 export const TextInput = ({
   name,
+  label,
   ...rest
 }: UseControllerProps & TextFieldProps) => {
   const { control } = useFormContext();
@@ -23,11 +24,11 @@ export const TextInput = ({
       <TextField
         {...field}
         {...rest}
-        label={name}
+        label={label}
         error={Boolean(error?.message)}
       />
       {error?.message ? (
-        <Typography color="red">{error.message}</Typography>
+        <Typography color="error">{error.message}</Typography>
       ) : null}
     </Box>
   );
