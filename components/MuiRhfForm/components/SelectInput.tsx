@@ -31,7 +31,7 @@ export const SelectInput = ({
   });
 
   return (
-    <FormControl variant="outlined" fullWidth margin="normal">
+    <FormControl variant="outlined" fullWidth>
       <InputLabel error={invalid}>{label}</InputLabel>
       <Select
         {...inputProps}
