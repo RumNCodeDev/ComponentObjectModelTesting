@@ -17,8 +17,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        {/* <SignUpForm onSubmit={handleSubmit} /> */}
-        <MuiRhfForm onSubmit={handleSubmit} />
+        <SignUpForm onSubmit={handleSubmit} />
+        {/* <MuiRhfForm onSubmit={handleSubmit} /> */}
       </main>
     </div>
   );
