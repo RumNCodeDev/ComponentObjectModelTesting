@@ -1,13 +1,12 @@
-import React from "react";
-import { useController, UseControllerProps } from "react-hook-form";
+import { Option } from "@/types/formTypes";
 import {
+  Box,
   FormControl,
-  InputLabel,
   MenuItem,
-  Select,
+  TextField,
   Typography,
 } from "@mui/material";
-import { Option } from "@/types/formTypes";
+import { useController, UseControllerProps } from "react-hook-form";
 
 interface FormSelectProps extends UseControllerProps {
   label: string;
@@ -20,10 +19,11 @@ export const SelectInput = ({
   label,
   options,
   defaultValue,
+  ...rest
 }: FormSelectProps) => {
   const {
     field: { ref, ...inputProps },
-    fieldState: { error, invalid },
+    fieldState: { error },
   } = useController({
     name,
     control,
@@ -31,24 +31,27 @@ export const SelectInput = ({
   });
 
   return (
-    <FormControl variant="outlined" fullWidth>
-      <InputLabel error={invalid}>{label}</InputLabel>
-      <Select
+    <Box>
+      <TextField
+        {...rest}
         {...inputProps}
-        label={label}
-        inputRef={ref}
         error={Boolean(error?.message)}
+        fullWidth
+        inputRef={ref}
+        role="combobox"
+        label={label}
+        select={true}
       >
-        <MenuItem value=""> </MenuItem>
+        <MenuItem value="" />
         {options.map((option, index) => (
-          <MenuItem key={index} value={option.value}>
+          <MenuItem key={index} value={option.value} role="menuitem">
             {option.label}
           </MenuItem>
         ))}
-      </Select>
+      </TextField>
       {error?.message ? (
         <Typography color="error">{error.message}</Typography>
       ) : null}
-    </FormControl>
+    </Box>
   );
 };
